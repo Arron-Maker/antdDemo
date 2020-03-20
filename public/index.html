@@ -6,12 +6,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Web site created using create-react-app" />
- 
   <title>React App</title>
+  <style>
+    .abc {
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+    }
+
+    .abc p {
+      width: 60px;
+      height: 60px;
+      border: 1px solid black;
+    }
+
+    .abc p span {
+      display: block;
+      width: 30px;
+      height: 30px;
+      border: 1px solid pink;
+    }
+  </style>
 </head>
 
 <body>
   <div id="root"></div>
+  <div class="abc">
+    div
+    <a href="https://www.baidu.com" id="a" target="_black">百度</a>
+    <p>
+      p
+      <span>span</span>
+    </p>
+  </div>
 </body>
+<script>
+  const div = document.querySelector(".abc")
+  const p = document.querySelector('p')
+  const span = p.querySelector('span')
+  const a = document.querySelector('#a')
+
+  const fn = function (event) {
+    //  console.log(event.target, 'target')
+    //  console.log(event.currentTarget)
+
+    // event.preventDefault()
+    // console.log(event.currentTarget,'currentTarget')
+    // console.log(this)
+
+    //阻止冒泡
+    event.stopPropagation()
+    console.log(event.currentTarget, 'currentTarget')
+
+  }
+
+  //p.addEventListener('click', fn, false)
+
+  div.addEventListener('click', fn, false)
+  p.addEventListener('click', fn, false)
+  span.addEventListener('click', fn, true)
+  //span.removeEventListener('click', fn, false)
+
+</script>
 
 </html>
